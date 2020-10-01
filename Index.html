@@ -39,17 +39,13 @@
                             <input name="latitude" id="latitude" /><br />
                             <label for="longitude" class="text-left"><pre>Longitude:</pre></label>
                             <input name="longitude" id="longitude" />
-                            <input type="button" onclick="getLocLL()" id="submit" name="submit" value="Submit" class="sub-button" form="myForm" /><br />
+                            <input type="button" id="getLocAdd" name="submit" value="Submit" class="sub-button" form="myForm" /><br />
 
                         </form>
                     </div>
                     <div>
-                        <p id="homeNumber"><pre>House Number:</pre></p>
-                        <p id="street"><pre>Street      :</pre></p>
-                        <p id="city"><pre>City        :</pre></p>
-                        <p id="state"><pre>State/County:</pre></p>
-                        <p id="country"><pre>Country     :</pre></p>
-                        <p id="countryCode"><pre>Country Code:</pre></p>
+                        <pre>Address :</pre>
+                        <p id="formatted"></p>
                     </div>
                 </div>
             </div>
@@ -64,12 +60,12 @@
                         <form id="myForm1" method="get">
                             <label for="address" class="text-left">Address :</label>
                             <input name="address" id="address" />
-                            <input type="button" onclick="getLocAd()" id="submit1" name="submit1" value="Submit" class="sub-button" form="myForm1" /><br />
+                            <input type="button" id="getLocLL" name="submit1" value="Submit" class="sub-button" form="myForm1" /><br />
                         </form>
                     </div>
                     <div>
-                        <pre>Latitude :</pre><p id="test1"></p>
-                        Longitude: <p id="test2"></p>
+                        <pre>Latitude :</pre><p id="txtLat"></p>
+                        Longitude: <p id="txtLong"></p>
                     </div>
                 </div>
             </div>
@@ -99,7 +95,8 @@
                             <option value="EG">Egypt</option>
                             <option value="AR">Argentina</option>
                         </select>
-                    <input type="button" onclick="getName()" id="submit2" name="submit2" value="Submit" class="sub-button" form="myFor2" /><br />
+<!--                        <input type="button" onclick="getName()" id="submit2" name="submit2" value="Submit" class="sub-button" form="myFor2" /><br /> -->
+                        <input type="button" id="getName" name="submit2" value="Submit" class="sub-button" form="myFor2" /><br />
                     </div>
                     <div>
                         <pre>Continent  :</pre><p id="continent"></p>
@@ -107,6 +104,7 @@
                         <pre>Capital    :</pre><p id="capital"></p>
                         <pre>Languages  :</pre><p id="languages"></p>
                         <pre>Population :</pre><p id="population"></p>
+                        <pre>Area in skm:</pre><p id="area"></p>
                     </div>
                 </div>
             </div>

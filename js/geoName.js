@@ -1,41 +1,27 @@
-// JavaScript source code
+	$('#getName').click(function() {
+		 
+		$.ajax({
+			url: "php/getCountryInfo.php",
+			type: 'POST',
+			dataType: 'json',
+			data: {
+				country: $('#selCountry').val()
+			},
+			success: function(result) {
 
-function getName() {
+				console.log(result);
 
-    var countryCode = $('#selCountry').val()
-    var api_url = 'http://api.geonames.org/countryInfoJSON?formatted=true&lang=en'
-
-    var request_url = api_url
-    + '&country=' + countryCode 
-        + '&username=flightltd&style=full'
-    var request = new XMLHttpRequest();
-    request.open('GET', request_url, true);
-
-    request.onload = function () {
-
-        if (request.status == 200) {
-        // Success!
-            var data = JSON.parse(request.responseText);
-            document.getElementById('continent').innerHTML = data.geonames[0].continentName;
-            document.getElementById('countryName').innerHTML = data.geonames[0].countryName;
-            document.getElementById('capital').innerHTML = data.geonames[0].capital;
-            document.getElementById('languages').innerHTML = data.geonames[0].languages;
-            document.getElementById('population').innerHTML = data.geonames[0].population;
-
-        } else if (request.status <= 500) {
-        // We reached our target server, but it returned an error
-
-        console.log("unable to geocode! Response code: " + request.status);
-        var data = JSON.parse(request.responseText);
-        } else {
-        console.log("server error");
-    }
-};
-
-request.onerror = function () {
-    // There was a connection error of some sort
-    console.log("unable to connect to server");
-};
-
-request.send();  // make the request
-}
+				if (result.status.name == "ok") {
+					$('#continent').html(result['data'][0]['continent']);
+					$('#countryName').html(result['data'][0]['countryName']);
+					$('#capital').html(result['data'][0]['capital']);
+					$('#languages').html(result['data'][0]['languages']);
+					$('#population').html(result['data'][0]['population']);
+					$('#area').html(result['data'][0]['areaInSqKm']);
+				}
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				// your error code
+			}
+		}); 
+	});
